@@ -1,4 +1,5 @@
-body, html {
+
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -14,21 +15,18 @@ body {
 }
 
 .container {
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* This will center the book vertically */
-  
+  align-items: center;
 }
-
 
 .book-title {
   font-size: 16px;
   color: #fff;
-  /* margin-bottom: 1px;  */
   text-align: center;
-} 
+}
 
 .book-container {
   width: 95%;
@@ -41,28 +39,30 @@ body {
 }
 
 .book {
-  width: 95%;
+  width: 100%; /* changed from 95% to 100% */
   height: 100%;
   position: relative;
   perspective: 2000px;
   border-radius: 5px;
   overflow: hidden;
-  aspect-ratio: 9/13;
+  aspect-ratio: 9 / 13;
 }
 
 .page {
   position: absolute;
   top: 0;
   left: 0;
-  width: 95%;
+  width: 100%; /* keep full width to match .book */
   height: 100%;
   transform-origin: left center;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000);
   backface-visibility: hidden;
-  background-color: #000; /* avoids flash */
-  display: block; /* always visible, only z-index controls front/back */
+  background-color: #000;
+  display: block;
   z-index: 1;
+  box-sizing: border-box;
+  padding: 0; /* remove extra padding that can cause the gap */
 }
 
 .page img {
@@ -70,14 +70,10 @@ body {
   height: 100%;
   object-fit: contain;
   display: block;
-  margin: 0; /* Remove unnecessary margin */
+  margin: 0 auto;
+  box-sizing: border-box;
   padding: 0;
 }
-.page {
-  padding: 10px;
-  box-sizing: border-box;
-}
-
 
 .current-page {
   z-index: 3;
