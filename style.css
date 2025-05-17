@@ -15,12 +15,12 @@ body {
   align-items: center;
 }
 
-.book-title {
+/* .book-title {
   font-size: 18px;
   color: #fff;
   margin-bottom: 1px; 
   text-align: center;
-}
+} */
 
 .book-container {
   width: 100%;
