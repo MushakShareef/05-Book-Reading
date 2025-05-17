@@ -69,37 +69,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function goToNextPage() {
     if (currentPage < totalPages) {
-      const current = document.getElementById(`page-${currentPage}`);
-      const next = document.getElementById(`page-${currentPage + 1}`);
+        const currentPageElement = document.getElementById(`page-${currentPage}`);
+        const nextPageElement = document.getElementById(`page-${currentPage + 1}`);
 
-      current.classList.add('flipping-forward');
+        // ✅ Step 1: Make sure next page is visible immediately
+        nextPageElement.classList.add('current-page');
 
-      setTimeout(() => {
-        current.classList.remove('current-page');
-        current.classList.remove('flipping-forward');
-        // current.style.display = 'none';
-        next.classList.add('current-page');
-        currentPage++;
-      }, 700);
+        // ✅ Step 2: Add flip animation to current
+        currentPageElement.classList.add('flipping-forward');
+
+        // ✅ Step 3: Finish the transition
+        setTimeout(() => {
+            currentPageElement.classList.remove('current-page');
+            currentPageElement.classList.remove('flipping-forward');
+
+            currentPage++;
+        }, 700); // match animation duration
     }
-  }
+}
+
 
   function goToPrevPage() {
     if (currentPage > 1) {
-      const current = document.getElementById(`page-${currentPage}`);
-      const prev = document.getElementById(`page-${currentPage - 1}`);
+        const currentPageElement = document.getElementById(`page-${currentPage}`);
+        const prevPageElement = document.getElementById(`page-${currentPage - 1}`);
 
-      prev.style.display = 'block';
-      prev.classList.add('flipping-backward');
+        prevPageElement.classList.add('current-page');
+        prevPageElement.classList.add('flipping-backward');
 
-      setTimeout(() => {
-        current.classList.remove('current-page');
-        prev.classList.remove('flipping-backward');
-        prev.classList.add('current-page');
-        currentPage--;
-      }, 700);
+        setTimeout(() => {
+            currentPageElement.classList.remove('current-page');
+            prevPageElement.classList.remove('flipping-backward');
+
+            currentPage--;
+        }, 700);
     }
-  }
+}
+
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToPrevPage();

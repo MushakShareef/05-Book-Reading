@@ -14,13 +14,13 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+/* 
 .book-title {
   font-size: 18px;
   color: #fff;
-  margin-bottom: 5px; /* smaller gap */
+  margin-bottom: 5px; 
   text-align: center;
-}
+} */
 
 .book-container {
   width: 100%;
