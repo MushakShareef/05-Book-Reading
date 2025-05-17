@@ -16,8 +16,10 @@ body {
 .container {
   height: 100vh; /* Full viewport height */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center; /* This will center the book vertically */
+  
 }
 
 
@@ -30,7 +32,7 @@ body {
 
 .book-container {
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,8 +41,8 @@ body {
 }
 
 .book {
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 100%;
   position: relative;
   perspective: 2000px;
   border-radius: 5px;
@@ -65,7 +67,7 @@ body {
 
 .page img {
   width: 90%;    
-  height: 95%;
+  height: 90%;
   object-fit: contain;
   display: block;
   margin: 0px;
