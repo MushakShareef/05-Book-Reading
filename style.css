@@ -66,12 +66,18 @@ body {
 }
 
 .page img {
-  width: 90%;    
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
-  margin: 5px;
+  margin: 0; /* Remove unnecessary margin */
+  padding: 0;
 }
+.page {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 
 .current-page {
   z-index: 3;
