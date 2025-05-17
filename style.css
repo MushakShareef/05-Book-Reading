@@ -1,0 +1,221 @@
+
+/* Cursor styles for different areas */
+.book {
+    cursor: grab;
+}/* Mobile Book Page Turner CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-container {
+    width: 100%;
+    max-width: 900px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.book {
+    width: 90%;
+    height: 85%;
+    position: relative;
+    perspective: 2000px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    aspect-ratio: 9/13;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: none;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    backface-visibility: hidden;
+    overflow: hidden;
+    box-shadow: inset -1px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.current-page {
+    display: block;
+    z-index: 1;
+}
+
+.flipping-forward {
+    display: block;
+    z-index: 2;
+    animation: flipForward 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+}
+
+.flipping-backward {
+    display: block;
+    z-index: 2;
+    animation: flipBackward 0.8s cubic-bezier(0.645, 0.045, 0.355, 1.000) forwards;
+}
+
+
+
+
+@keyframes flipForward {
+    0% {
+        transform: rotateY(0);
+        box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: rotateY(-180deg);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@keyframes flipBackward {
+    0% {
+        transform: rotateY(-180deg);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: rotateY(0);
+        box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+
+.page img {
+    max-width: 100%;
+    max-height: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.cover-image {
+    width: 90%;
+    height: 75%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.navigation {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#page-counter {
+    font-size: 14px;
+    color: #666;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-cover {
+    background-color: #f8f8f8;
+}
+
+/* For touch devices and visual guidance */
+.touch-area {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30%;
+    z-index: 10;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.book:hover .touch-area {
+    opacity: 0.5;
+}
+
+.left-touch {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent);
+}
+
+.right-touch {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.05), transparent);
+}
+
+@media (max-width: 768px) {
+    .book-container {
+        max-width: 100%;
+        height: 90vh;
+    }
+    
+    .book {
+        width: 95%;
+        height: 82%;
+    }
+    
+    .page-content {
+        padding: 10px;
+    }
+    
+    p {
+        font-size: 12px;
+        margin: 5px 0;
+    }
+    
+    .page img {
+        max-height: 85%;
+        margin-bottom: 5px;
+    }
+}
