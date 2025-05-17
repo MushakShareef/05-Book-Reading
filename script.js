@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => {
         current.classList.remove('current-page');
         current.classList.remove('flipping-forward');
-        current.style.display = 'none';
+        // current.style.display = 'none';
         next.classList.add('current-page');
         currentPage++;
       }, 700);
